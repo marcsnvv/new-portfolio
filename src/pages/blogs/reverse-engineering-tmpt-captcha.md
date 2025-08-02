@@ -86,9 +86,7 @@ The action parameter is context-specific and depends on the particular page or f
 
 ## Making the POST Request
 
-For the final request to the server side, we need to consider several things for our "tmpt" token to be valid, such as the headers:
-
-*[Image: Request headers showing proper formatting]*
+For the final request to the server side, we need to consider several things for our "tmpt" token to be valid, such as the headers.
 
 Make sure your headers are ordered in the same way the browser does. Some very important headers are:
 
