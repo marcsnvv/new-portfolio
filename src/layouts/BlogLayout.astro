@@ -1,0 +1,115 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <div class="min-h-screen bg-base-100">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+      <!-- Blog Header -->
+      <header class="mb-8">
+        <nav class="mb-6">
+          <a href="/blog" class="btn btn-ghost btn-sm">
+            ← Back to Blog
+          </a>
+        </nav>
+        
+        <h1 class="text-4xl font-bold text-primary mb-4">{frontmatter.title}</h1>
+        
+        <div class="flex flex-wrap gap-4 text-sm text-base-content/60 mb-4">
+          <time datetime={frontmatter.date}>
+            {new Date(frontmatter.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </time>
+          {frontmatter.author && (
+            <span>by {frontmatter.author}</span>
+          )}
+        </div>
+        
+        {frontmatter.description && (
+          <p class="text-lg text-base-content/80 mb-6">{frontmatter.description}</p>
+        )}
+        
+        {frontmatter.tags && (
+          <div class="flex flex-wrap gap-2">
+            {frontmatter.tags.map((tag) => (
+              <span class="badge badge-secondary badge-sm">{tag}</span>
+            ))}
+          </div>
+        )}
+      </header>
+      
+      <!-- Blog Content -->
+      <article class="prose prose-lg max-w-none prose-headings:text-primary prose-a:text-accent hover:prose-a:text-accent-focus prose-code:text-secondary prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300 prose-img:rounded-lg prose-img:shadow-lg">
+        <slot />
+      </article>
+      
+      <!-- Navigation -->
+      <footer class="mt-12 pt-8 border-t border-base-300">
+        <div class="flex justify-between items-center">
+          <a href="/blog" class="btn btn-outline">
+            ← All Posts
+          </a>
+          <div class="text-sm text-base-content/60">
+            Published on {new Date(frontmatter.date).toLocaleDateString()}
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  /* Custom styles for code blocks */
+  .prose pre {
+    @apply bg-base-200 border border-base-300 rounded-lg;
+  }
+  
+  .prose code {
+    @apply text-secondary bg-base-200 px-1 py-0.5 rounded;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  /* Enhanced image styling */
+  .prose img {
+    @apply rounded-lg shadow-lg mx-auto my-6 max-w-full h-auto;
+    border: 1px solid theme('colors.base-300');
+  }
+  
+  .prose figure {
+    @apply my-8;
+  }
+  
+  .prose figcaption {
+    @apply text-center text-sm text-base-content/60 mt-2 italic;
+  }
+  
+  /* Responsive images */
+  .prose img {
+    @apply w-full md:w-auto md:max-w-4xl;
+  }
+  
+  /* Table styling */
+  .prose table {
+    @apply table table-zebra w-full;
+  }
+  
+  .prose th {
+    @apply bg-base-200;
+  }
+  
+  /* Blockquote styling */
+  .prose blockquote {
+    @apply border-l-4 border-primary bg-base-200 p-4 rounded-r-lg;
+  }
+  
+  body {
+    font-family: "DM Sans Variable", sans-serif;
+  }
+</style>

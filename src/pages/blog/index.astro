@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all blog posts
+const blogPosts = await Astro.glob('../blogs/*.md');
+const sortedPosts = blogPosts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+---
+
+<BaseLayout>
+  <div class="min-h-screen bg-base-100">
+    <div class="container mx-auto px-4 py-8">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-primary mb-4">Blog</h1>
+        <p class="text-lg text-base-content/70">Technical articles and insights</p>
+      </header>
+      
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {sortedPosts.map((post) => (
+          <article class="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow">
+            <div class="card-body">
+              <h2 class="card-title text-xl mb-2">
+                <a href={post.url} class="hover:text-primary transition-colors">
+                  {post.frontmatter.title}
+                </a>
+              </h2>
+              <p class="text-sm text-base-content/60 mb-3">
+                {new Date(post.frontmatter.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </p>
+              <p class="text-base-content/80 mb-4">
+                {post.frontmatter.description || 'Read more about this topic...'}
+              </p>
+              <div class="card-actions justify-end">
+                <a href={post.url} class="btn btn-primary btn-sm">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  body {
+    font-family: "DM Sans Variable", sans-serif;
+  }
+</style>
