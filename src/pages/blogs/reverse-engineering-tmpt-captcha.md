@@ -206,4 +206,6 @@ If you have any questions about this article, you can contact me through hey@mar
 
 ---
 
-*This analysis is for educational and research purposes only. Always respect terms of service and applicable laws when conducting security research.*
+## Disclaimer
+
+*This package is unofficial and not affiliated with Amazon or AWS. Use it responsibly and in accordance with Ticketmaster's terms of service.*
