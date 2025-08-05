@@ -7,21 +7,12 @@ tags: ["reverse-engineering", "captcha", "recaptcha", "tmpt", "security"]
 layout: ../../layouts/BlogLayout.astro
 ---
 
-# Reverse Engineering TMPT Token Generation
-
-In this article, we will perform reverse engineering to generate the "tmpt" token. This token is an additional challenge component of Google reCAPTCHA v3. This article will not explain how to solve reCAPTCHA v3 entirely, but only how to generate the "tmpt" token specifically.
-
-## Introduction
-
-The TMPT (Time-based Multi-Part Token) represents a sophisticated layer within Google's reCAPTCHA v3 system. While reCAPTCHA v3 provides behavioral analysis and risk scoring, the TMPT token adds an additional verification mechanism that requires specific reverse engineering techniques to understand and replicate.
-
 ## Initial Analysis
 
 When we first encounter the TMPT challenge, we notice several key components that need to be considered:
 
 1. **Client-side JavaScript validation**
 2. **Server-side token verification**
-3. **Time-based expiration mechanism**
 4. **Behavioral pattern analysis**
 
 These components work together to create a multi-layered security system that validates both the authenticity of the request and the behavioral patterns of the user.
@@ -211,7 +202,7 @@ Please note that this script is not finished and is simply a representation of t
 
 ## Contact
 
-If you have any questions about this article, you can contact me through Discord @imbusto
+If you have any questions about this article, you can contact me through hey@marcsnv.com
 
 ---
 
