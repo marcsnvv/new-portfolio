@@ -208,4 +208,4 @@ If you have any questions about this article, you can contact me through hey@mar
 
 ## Disclaimer
 
-*This package is unofficial and not affiliated with Amazon or AWS. Use it responsibly and in accordance with Ticketmaster's terms of service.*
+*This package is unofficial and not affiliated with Amazon or AWS. Use it responsibly and in accordance with Amazon's terms of service.*
